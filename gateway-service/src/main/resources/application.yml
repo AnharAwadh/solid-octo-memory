@@ -40,7 +40,7 @@ spring:
             - Path=/api/driver/**
 
 jwt:
-  secret: ${JWT_SECRET:MySecretKeyForJWTTokenGenerationThatShouldBeAtLeast256BitsLong123456}
+  secret: ${JWT_SECRET:ff33cbf26caf1667573f2e4e49018375}
   expiration: ${JWT_EXPIRATION:86400000}
 
 logging:

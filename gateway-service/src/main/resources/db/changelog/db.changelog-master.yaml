@@ -100,7 +100,7 @@ databaseChangeLog:
                   value: customer1@example.com
               - column:
                   name: phone
-                  value: +1234567890
+                  value: 05636388
               - column:
                   name: role
                   value: CUSTOMER
@@ -122,7 +122,7 @@ databaseChangeLog:
                   value: driver1@example.com
               - column:
                   name: phone
-                  value: +0987654321
+                  value: 0556372723
               - column:
                   name: role
                   value: DRIVER
