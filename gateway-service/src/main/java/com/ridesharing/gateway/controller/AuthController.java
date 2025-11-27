@@ -2,6 +2,8 @@ package com.ridesharing.gateway.controller;
 
 import com.ridesharing.gateway.dto.*;
 import com.ridesharing.gateway.service.AuthService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -36,6 +38,15 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success("Registration successful", user));
     }
-    
+
+    @PostMapping("/logout")
+    public ResponseEntity<ApiResponse<String>> logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            log.info("Logging out session: {}", session.getId());
+            session.invalidate();
+        }
+        return ResponseEntity.ok(ApiResponse.success("Logged out successfully", "OK"));
+    }
 
 }
