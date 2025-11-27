@@ -1,0 +1,95 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: ridesharing
+      changes:
+        - sql:
+            sql: CREATE SCHEMA IF NOT EXISTS customer
+  
+  - changeSet:
+      id: 2
+      author: ridesharing
+      changes:
+        - createTable:
+            schemaName: customer
+            tableName: rides
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: customer_name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: driver_id
+                  type: BIGINT
+              - column:
+                  name: driver_name
+                  type: VARCHAR(100)
+              - column:
+                  name: pickup_location
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dropoff_location
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  defaultValue: PENDING
+                  constraints:
+                    nullable: false
+              - column:
+                  name: requested_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: accepted_at
+                  type: TIMESTAMP
+              - column:
+                  name: completed_at
+                  type: TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+  
+  - changeSet:
+      id: 3
+      author: ridesharing
+      changes:
+        - createIndex:
+            schemaName: customer
+            tableName: rides
+            indexName: idx_rides_customer_id
+            columns:
+              - column:
+                  name: customer_id
+        - createIndex:
+            schemaName: customer
+            tableName: rides
+            indexName: idx_rides_driver_id
+            columns:
+              - column:
+                  name: driver_id
+        - createIndex:
+            schemaName: customer
+            tableName: rides
+            indexName: idx_rides_status
+            columns:
+              - column:
+                  name: status

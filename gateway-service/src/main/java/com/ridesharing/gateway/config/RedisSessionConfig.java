@@ -1,5 +1,6 @@
 package com.ridesharing.gateway.config;
 
+import lombok.extern.log4j.Log4j2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -13,10 +14,10 @@ import org.springframework.session.data.redis.config.annotation.web.server.Enabl
 
 
 @Configuration
-@EnableRedisWebSession(maxInactiveIntervalInSeconds = 3600) // 1 hour session timeout
+@EnableRedisWebSession(maxInactiveIntervalInSeconds = 3600)// 1 hour session timeout
+@Log4j2
 public class RedisSessionConfig {
 
-    private static final Logger log = LoggerFactory.getLogger(RedisSessionConfig.class);
 
     @Bean
     public ReactiveRedisTemplate<String, Object> reactiveRedisTemplate(
