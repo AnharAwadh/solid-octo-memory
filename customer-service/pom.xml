@@ -9,7 +9,6 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
     
-    <n>Customer Service</n>
     <description>Customer Service - Independent Microservice for ride requests</description>
 
     <parent>

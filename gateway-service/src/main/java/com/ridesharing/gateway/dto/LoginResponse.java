@@ -14,7 +14,7 @@ public class LoginResponse {
     private String sessionId;
     private Long expiresIn;
     private UserResponse user;
-
+    
     public static LoginResponse of(String sessionId, Long expiresIn, UserResponse user) {
         return LoginResponse.builder()
                 .sessionId(sessionId)
